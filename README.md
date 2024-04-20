@@ -1,8 +1,11 @@
-# React + Vite
+# Project overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This part of the react course goes through:
 
-Currently, two official plugins are available:
+-   useReducer
+-   Managing related pieces of State
+-   Loading questions from a fake API
+-   Handling loading, error and ready status
+-   Setting up a timer with useEffect
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The Ultimate React Course 2024, By Jonas Schmedtmann
