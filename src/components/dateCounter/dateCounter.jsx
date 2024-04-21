@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useReducer } from "react";
 
 function reducer(state, action) {
     if (action.type === "inc") return state + 1;
@@ -7,8 +7,10 @@ function reducer(state, action) {
 }
 
 function DateCounter() {
-    const [count, dispatch] = useReducer(reducer, 0);
-    const [step, setStep] = useState(1);
+    /*This new hook takes in not only the initial state but also a reducer function which will always get access the to current state and the action that we pass into the dispatch function.*/
+    // const [step, setStep] = useState(1);
+    const initialState = { count: 0, step: 1 };
+    const [count, dispatch] = useReducer(reducer, initialState);
 
     // This mutates the date object.
     const date = new Date("june 21 2027");
