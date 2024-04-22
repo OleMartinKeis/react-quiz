@@ -29,6 +29,8 @@ function reducer(state, action) {
                 ...state, // Spread operator to copy current state
                 status: "error", // Set status to "error" indicating data retrieval failure
             };
+        case "start":
+            return { ...state, status: "active" };
         // Default case for handling unknown actions
         default:
             // Throw an error since the action type is not recognized
@@ -56,7 +58,10 @@ function App() {
                 {status === "loading" && <Loader />}
                 {status === "error" && <Error />}
                 {status === "ready" && (
-                    <StartScreen numQuestions={numQuestions} />
+                    <StartScreen
+                        dispatch={dispatch}
+                        numQuestions={numQuestions}
+                    />
                 )}
                 {status === "active" && <Question />}
             </Main>
