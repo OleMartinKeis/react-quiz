@@ -4,6 +4,7 @@ import Header from "./components/header/header";
 import Main from "./components/main";
 import Loader from "./components/loader";
 import Error from "./components/error/error";
+import StartScreen from "./components/startScreen/startScreen";
 
 const initialState = {
     questions: [],
@@ -37,6 +38,9 @@ function reducer(state, action) {
 function App() {
     const [{ questions, status }, dispatch] = useReducer(reducer, initialState);
     // Effect hook to fetch data from the API when the component mounts
+
+    const numQuestions = questions.length;
+
     useEffect(function () {
         fetch("http://localhost:8000/questions") // Get information from the fake API
             .then((res) => res.json()) // Convert the response to JSON format
@@ -50,6 +54,9 @@ function App() {
             <Main>
                 {status === "loading" && <Loader />}
                 {status === "error" && <Error />}
+                {status === "ready" && (
+                    <StartScreen numQuestions={numQuestions} />
+                )}
             </Main>
         </div>
     );
