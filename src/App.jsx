@@ -5,6 +5,7 @@ import Main from "./components/main";
 import Loader from "./components/loader";
 import Error from "./components/error/error";
 import StartScreen from "./components/startScreen/startScreen";
+import Question from "./components/questions/Question";
 
 const initialState = {
     questions: [],
@@ -57,6 +58,7 @@ function App() {
                 {status === "ready" && (
                     <StartScreen numQuestions={numQuestions} />
                 )}
+                {status === "active" && <Question />}
             </Main>
         </div>
     );
