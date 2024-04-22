@@ -33,6 +33,8 @@ function reducer(state, action) {
             };
         case "start":
             return { ...state, status: "active" };
+        case "newAnswer":
+            return { ...state, answer: action.payload };
         // Default case for handling unknown actions
         default:
             // Throw an error since the action type is not recognized
