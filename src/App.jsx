@@ -10,30 +10,37 @@ const initialState = {
 };
 function reducer(state, action) {
     switch (action.type) {
+        // Case for when data is successfully received from the API
         case "dataReceived":
+            // Return a new state object with updated questions and status
             return {
-                ...state,
-                questions: action.payload,
-                status: "ready",
+                ...state, // Spread operator to copy current state
+                questions: action.payload, // Update questions with received data
+                status: "ready", // Set status to "ready" indicating successful data retrieval
             };
+        // Case for when data retrieval from the API fails
         case "dataFailed":
+            // Return a new state object with updated status indicating error
             return {
-                ...state,
-                status: "error",
+                ...state, // Spread operator to copy current state
+                status: "error", // Set status to "error" indicating data retrieval failure
             };
+        // Default case for handling unknown actions
         default:
+            // Throw an error since the action type is not recognized
             throw new Error("action unknown");
     }
 }
 
 function App() {
     const [state, dispatch] = useReducer(reducer, initialState);
+    // Effect hook to fetch data from the API when the component mounts
     useEffect(function () {
-        fetch("http://localhost:8000/questions")
-            .then((res) => res.json())
-            .then((data) => dispatch({ type: "dataReceived", payload: data }))
-            .catch((err) => dispatch({ type: "dataFailed" }));
-    }, []);
+        fetch("http://localhost:8000/questions") // Get information from the fake API
+            .then((res) => res.json()) // Convert the response to JSON format
+            .then((data) => dispatch({ type: "dataReceived", payload: data })) // Dispatch action for successful data retrieval
+            .catch((err) => dispatch({ type: "dataFailed" })); // Dispatch action for data retrieval failure
+    }, []); // Empty dependency array ensures the effect runs only once when the component mounts
     return (
         <div className="app">
             <Header />
