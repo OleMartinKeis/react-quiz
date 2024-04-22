@@ -2,6 +2,8 @@
 import { useEffect, useReducer } from "react";
 import Header from "./components/header/header";
 import Main from "./components/main";
+import Loader from "./components/loader";
+import Error from "./components/error/error";
 
 const initialState = {
     questions: [],
@@ -33,7 +35,7 @@ function reducer(state, action) {
 }
 
 function App() {
-    const [state, dispatch] = useReducer(reducer, initialState);
+    const [{ questions, status }, dispatch] = useReducer(reducer, initialState);
     // Effect hook to fetch data from the API when the component mounts
     useEffect(function () {
         fetch("http://localhost:8000/questions") // Get information from the fake API
@@ -46,8 +48,8 @@ function App() {
             <Header />
             {/* <DateCounter /> */}
             <Main>
-                <p>1/15</p>
-                <p>Question</p>
+                {status === "loading" && <Loader />}
+                {status === "error" && <Error />}
             </Main>
         </div>
     );
