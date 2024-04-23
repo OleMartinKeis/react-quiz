@@ -1,4 +1,6 @@
 export default function Option({ question, answer, dispatch }) {
+    const hasAnswered = answer !== null;
+
     return (
         <div>
             <div className="options">
@@ -7,12 +9,14 @@ export default function Option({ question, answer, dispatch }) {
                         className={`btn btn-option ${
                             index === answer ? "answer" : ""
                         } ${
-                            index === question.correctOption
-                                ? "correct"
-                                : "wrong"
+                            hasAnswered
+                                ? index === question.correctOption
+                                    ? "correct"
+                                    : "wrong"
+                                : ""
                         }`}
                         key={option}
-                        disabled={answer !== null}
+                        disabled={hasAnswered}
                         onClick={() =>
                             dispatch({ type: "newAnswer", payload: index })
                         }
