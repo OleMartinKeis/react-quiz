@@ -1,4 +1,4 @@
-export default function Progress(index, numQuestions) {
+export default function Progress({ index, numQuestions }) {
     return (
         <header className="progress">
             <p>
