@@ -6,6 +6,7 @@ import Loader from "./components/loader";
 import Error from "./components/error/error";
 import StartScreen from "./components/startScreen/startScreen";
 import Question from "./components/questions/Question";
+import NextButton from "./components/nextButton";
 
 const initialState = {
     questions: [],
@@ -86,11 +87,14 @@ function App() {
                     />
                 )}
                 {status === "active" && (
-                    <Question
-                        dispatch={dispatch}
-                        answer={answer}
-                        question={questions[index]}
-                    />
+                    <>
+                        <Question
+                            dispatch={dispatch}
+                            answer={answer}
+                            question={questions[index]}
+                        />
+                        <NextButton dispatch={dispatch} answer={answer} />
+                    </>
                 )}
             </Main>
         </div>
