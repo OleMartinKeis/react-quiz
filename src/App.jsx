@@ -44,7 +44,7 @@ function reducer(state, action) {
                 answer: action.payload, // update the answer with the payload (newly provided answer)
                 points:
                     action.payload === question.correctOption // Check if the provided answer matches the cprrect option of the question
-                        ? state.points + 10 //increment points by 10 if the answer is correct
+                        ? state.points + question.points //increment points by the value assigned to question (in the "API") if the answer is correct
                         : state.points, // Keep points unchanged if the answer is incorrect
             };
         // Default case for handling unknown actions
