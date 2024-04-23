@@ -98,6 +98,7 @@ function App() {
                             index={index}
                             points={points}
                             maxPossiblePoints={maxPossiblePoints}
+                            answer={answer}
                         />
                         <Question
                             dispatch={dispatch}
