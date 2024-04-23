@@ -52,6 +52,8 @@ function reducer(state, action) {
             };
         case "nextQuestion":
             return { ...state, index: state.index + 1, answer: null };
+        case "finish":
+            return { ...state, status: "finished", index: 0 };
 
         // Default case for handling unknown actions
         default:
@@ -106,7 +108,12 @@ function App() {
                             answer={answer}
                             question={questions[index]}
                         />
-                        <NextButton dispatch={dispatch} answer={answer} />
+                        <NextButton
+                            dispatch={dispatch}
+                            answer={answer}
+                            numQuestion={numQuestions}
+                            index={index}
+                        />
                     </>
                 )}
                 {status === "finished" && (
