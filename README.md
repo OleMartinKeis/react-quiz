@@ -8,4 +8,6 @@ This part of the react course goes through:
 -   Handling loading, error and ready status
 -   Setting up a timer with useEffect
 
+As this is just a part of the Course, I will not be creating a new branch and just deploy to the main branch
+
 The Ultimate React Course 2024, By Jonas Schmedtmann
