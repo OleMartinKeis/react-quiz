@@ -47,6 +47,9 @@ function reducer(state, action) {
                         ? state.points + question.points //increment points by the value assigned to question (in the "API") if the answer is correct
                         : state.points, // Keep points unchanged if the answer is incorrect
             };
+        case "nextQuestion":
+            return { ...state, index: state.index + 1 };
+
         // Default case for handling unknown actions
         default:
             // Throw an error since the action type is not recognized
