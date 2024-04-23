@@ -35,7 +35,18 @@ function reducer(state, action) {
         case "start":
             return { ...state, status: "active" };
         case "newAnswer":
-            return { ...state, answer: action.payload };
+            //extract the current question from the state based on the current index
+            const question = state.questions.at(state.index);
+            //Calculate the new points based on the provided answer and the correct option of the question
+            //If the provided answer matches the correct option, increment the points by 10; otherwise, keep the points unchanged
+            return {
+                ...state, // spread operator to copy the current state
+                answer: action.payload, // update the answer with the payload (newly provided answer)
+                points:
+                    action.payload === question.correctOption // Check if the provided answer matches the cprrect option of the question
+                        ? state.points + 10 //increment points by 10 if the answer is correct
+                        : state.points, // Keep points unchanged if the answer is incorrect
+            };
         // Default case for handling unknown actions
         default:
             // Throw an error since the action type is not recognized
