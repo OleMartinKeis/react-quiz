@@ -67,6 +67,10 @@ function App() {
     // Effect hook to fetch data from the API when the component mounts
 
     const numQuestions = questions.length;
+    const maxPossiblePoints = questions.reduce(
+        (prev, cur) => prev + cur.points,
+        0
+    );
 
     useEffect(function () {
         fetch("http://localhost:8000/questions") // Get information from the fake API
