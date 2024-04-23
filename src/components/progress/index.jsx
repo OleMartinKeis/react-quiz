@@ -1,4 +1,9 @@
-export default function Progress({ index, numQuestions, points }) {
+export default function Progress({
+    index,
+    numQuestions,
+    points,
+    maxPossiblePoints,
+}) {
     return (
         <header className="progress">
             <p>
@@ -6,7 +11,7 @@ export default function Progress({ index, numQuestions, points }) {
             </p>
             <p></p>
             <p>
-                <strong>{points}</strong> / x
+                <strong>{points}</strong> / {maxPossiblePoints}
             </p>
         </header>
     );
