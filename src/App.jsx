@@ -49,7 +49,7 @@ function reducer(state, action) {
                         : state.points, // Keep points unchanged if the answer is incorrect
             };
         case "nextQuestion":
-            return { ...state, index: state.index + 1 };
+            return { ...state, index: state.index + 1, answer: null };
 
         // Default case for handling unknown actions
         default:
