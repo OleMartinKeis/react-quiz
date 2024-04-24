@@ -65,11 +65,9 @@ function reducer(state, action) {
             };
         case "restart":
             return {
-                ...state,
+                ...initialState,
+                questions: state.questions,
                 status: "ready",
-                index: 0,
-                answer: null,
-                points: 0,
             };
 
         // Default case for handling unknown actions
