@@ -63,6 +63,14 @@ function reducer(state, action) {
                         ? state.points
                         : state.highScore,
             };
+        case "restart":
+            return {
+                ...state,
+                status: "ready",
+                index: 0,
+                answer: null,
+                points: 0,
+            };
 
         // Default case for handling unknown actions
         default:
@@ -125,6 +133,7 @@ function App() {
                 )}
                 {status === "finished" && (
                     <FinishScreen
+                        dispatch={dispatch}
                         points={points}
                         maxPossiblePoints={maxPossiblePoints}
                         highScore={highScore}
