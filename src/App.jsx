@@ -20,6 +20,7 @@ const initialState = {
     answer: null,
     points: 0,
     highScore: 0,
+    secondsRemaining: 10,
 };
 function reducer(state, action) {
     switch (action.type) {
