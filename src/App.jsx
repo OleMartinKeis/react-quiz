@@ -57,6 +57,7 @@ function reducer(state, action) {
             return {
                 ...state,
                 status: "finished",
+                // If points is greater than highScore, update the state so value is changed.
                 highScore:
                     state.points > state.highScore
                         ? state.points
