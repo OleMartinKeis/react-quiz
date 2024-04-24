@@ -127,6 +127,7 @@ function App() {
                     <FinishScreen
                         points={points}
                         maxPossiblePoints={maxPossiblePoints}
+                        highScore={highScore}
                     />
                 )}
             </Main>
