@@ -72,7 +72,8 @@ function reducer(state, action) {
                 questions: state.questions,
                 status: "ready",
             };
-
+        case "tick":
+            return { ...state, secondsRemaining: state.secondsRemaining - 1 };
         // Default case for handling unknown actions
         default:
             // Throw an error since the action type is not recognized
@@ -125,7 +126,7 @@ function App() {
                             question={questions[index]}
                         />
                         <Footer>
-                            <Timer />
+                            <Timer dispatch={dispatch} />
                             <NextButton
                                 dispatch={dispatch}
                                 answer={answer}
