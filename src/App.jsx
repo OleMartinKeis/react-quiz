@@ -72,6 +72,8 @@ function reducer(state, action) {
                 questions: state.questions,
                 status: "ready",
             };
+
+        // Subtract 1 second, every second
         case "tick":
             return { ...state, secondsRemaining: state.secondsRemaining - 1 };
         // Default case for handling unknown actions
@@ -82,8 +84,18 @@ function reducer(state, action) {
 }
 
 function App() {
-    const [{ questions, status, index, answer, points, highScore }, dispatch] =
-        useReducer(reducer, initialState);
+    const [
+        {
+            questions,
+            status,
+            index,
+            answer,
+            points,
+            highScore,
+            secondsRemaining,
+        },
+        dispatch,
+    ] = useReducer(reducer, initialState);
     // Effect hook to fetch data from the API when the component mounts
 
     const numQuestions = questions.length;
@@ -126,7 +138,10 @@ function App() {
                             question={questions[index]}
                         />
                         <Footer>
-                            <Timer dispatch={dispatch} />
+                            <Timer
+                                dispatch={dispatch}
+                                secondsRemaining={secondsRemaining}
+                            />
                             <NextButton
                                 dispatch={dispatch}
                                 answer={answer}
