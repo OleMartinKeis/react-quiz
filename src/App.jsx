@@ -17,6 +17,7 @@ const initialState = {
     index: 0,
     answer: null,
     points: 0,
+    highScore: 0,
 };
 function reducer(state, action) {
     switch (action.type) {
@@ -53,7 +54,14 @@ function reducer(state, action) {
         case "nextQuestion":
             return { ...state, index: state.index + 1, answer: null };
         case "finish":
-            return { ...state, status: "finished" };
+            return {
+                ...state,
+                status: "finished",
+                highScore:
+                    state.points > state.highScore
+                        ? state.points
+                        : state.highScore,
+            };
 
         // Default case for handling unknown actions
         default:
