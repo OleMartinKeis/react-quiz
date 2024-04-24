@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export default function Timer({ dispatch }) {
+export default function Timer({ dispatch, secondsRemaining }) {
     useEffect(
         function () {
             setInterval(function () {
@@ -9,5 +9,5 @@ export default function Timer({ dispatch }) {
         },
         [dispatch]
     );
-    return <div className="timer">05:00</div>;
+    return <div className="timer">{secondsRemaining}</div>;
 }
