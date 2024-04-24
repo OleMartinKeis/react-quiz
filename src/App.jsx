@@ -75,7 +75,12 @@ function reducer(state, action) {
 
         // Subtract 1 second, every second
         case "tick":
-            return { ...state, secondsRemaining: state.secondsRemaining - 1 };
+            return {
+                ...state,
+                secondsRemaining: state.secondsRemaining - 1,
+                status:
+                    state.secondsRemaining === 0 ? "finished" : state.status,
+            };
         // Default case for handling unknown actions
         default:
             // Throw an error since the action type is not recognized
