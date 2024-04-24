@@ -12,6 +12,8 @@ import FinishScreen from "./components/finishScreen";
 import Footer from "./components/footer";
 import Timer from "./components/timer";
 
+const SECS_PER_QUESTION = 30;
+
 const initialState = {
     questions: [],
     // "loading, "error", "ready", "active", "finished"
@@ -20,7 +22,7 @@ const initialState = {
     answer: null,
     points: 0,
     highScore: 0,
-    secondsRemaining: 10,
+    secondsRemaining: null,
 };
 function reducer(state, action) {
     switch (action.type) {
@@ -40,7 +42,12 @@ function reducer(state, action) {
                 status: "error", // Set status to "error" indicating data retrieval failure
             };
         case "start":
-            return { ...state, status: "active" };
+            return {
+                ...state,
+                status: "active",
+                // Gives you 30 seconds per question and calculates based on the amount of questions
+                secondsRemaining: state.questions.length * SECS_PER_QUESTION,
+            };
         case "newAnswer":
             //extract the current question from the state based on the current index
             const question = state.questions.at(state.index);
