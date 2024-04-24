@@ -1,4 +1,4 @@
-export default function FinishScreen({ maxPossiblePoints, points }) {
+export default function FinishScreen({ maxPossiblePoints, points, highScore }) {
     // Finds the percentage of how many points you have scored
     const percentage = (points / maxPossiblePoints) * 100;
 
@@ -15,7 +15,7 @@ export default function FinishScreen({ maxPossiblePoints, points }) {
                 <span>{emoji}</span> You scored <strong>{points}</strong> out of{" "}
                 {maxPossiblePoints} ({Math.ceil(percentage)}%)
             </p>
-            <p className="highscore">(Highscore: x Points)</p>
+            <p className="highscore">(Highscore: {highScore} Points)</p>
         </>
     );
 }
