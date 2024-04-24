@@ -72,10 +72,8 @@ function reducer(state, action) {
 }
 
 function App() {
-    const [{ questions, status, index, answer, points }, dispatch] = useReducer(
-        reducer,
-        initialState
-    );
+    const [{ questions, status, index, answer, points, highScore }, dispatch] =
+        useReducer(reducer, initialState);
     // Effect hook to fetch data from the API when the component mounts
 
     const numQuestions = questions.length;
