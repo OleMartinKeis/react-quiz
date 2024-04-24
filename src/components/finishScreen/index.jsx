@@ -16,6 +16,12 @@ export default function FinishScreen({ maxPossiblePoints, points, highScore }) {
                 {maxPossiblePoints} ({Math.ceil(percentage)}%)
             </p>
             <p className="highscore">(Highscore: {highScore} Points)</p>
+            <button
+                className="btn btn-ui"
+                onClick={() => dispatchEvent({ type: "restart" })}
+            >
+                Restart quiz
+            </button>
         </>
     );
 }
